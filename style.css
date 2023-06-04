@@ -7,8 +7,8 @@
   --soft-red: hsl(345, 95%, 68%);
   --white: hsl(0, 0%, 100%);
   --dark-desaturated-blue: hsl(236, 21%, 26%);
-  --dark-blue: hsl(235, 16%, 14%);
-  --black: hsl(234, 17%, 12%);
+  --dark-blue: hsl(235, 15%, 14%);
+  --black: hsl(235, 18%, 12%);
 
   --fw-700: 700;
 }
@@ -16,9 +16,117 @@
 *,
 *::before,
 *::after {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 body {
+  font-family: var(--ff-Red-Hat);
   min-height: 100vh;
+  background: url(images/pattern-hills.svg), url(images/bg-stars.svg),
+    linear-gradient(180deg, #191a24 17%, #1e1f29 51%, #2b212d 83%);
+  background-size: 1300px, cover;
+  background-repeat: no-repeat;
+  background-position: 82% 100%, center center;
+  color: var(--white);
+  font-weight: var(--fw-700);
+}
+
+.wrapper {
+  width: min(90%, 700px);
+  margin-inline: auto;
+}
+
+.header {
+  padding-top: 140px;
+}
+
+.header-title {
+  font-size: 23px;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 7px;
+}
+
+.card-container {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-inline: auto;
+}
+
+/** Countdown Cards **/
+
+.card {
+  font-size: clamp(2rem, -0.483rem + 10.596vw, 4rem);
+  position: relative;
+  width: 140px;
+  aspect-ratio: 1;
+  perspective: 1000px;
+}
+
+.card-face {
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.top,
+.bottom,
+.flip-top,
+.flip-bottom {
+  width: 100%;
+  height: 50%;
+  line-height: 0;
+}
+
+.top {
+  display: grid;
+  place-content: end center;
+  background-color: black;
+}
+
+.bottom {
+  text-align: center;
+  background-color: black;
+}
+
+.flip-top {
+  position: absolute;
+  transform-origin: bottom;
+  z-index: 1;
+  animation: flipTop 1s linear both;
+}
+
+.flip-bottom {
+  position: absolute;
+  transform-origin: top;
+  bottom: 0;
+  z-index: 1;
+  animation: flipBottom 1s linear 1s both;
+}
+
+@keyframes flipTop {
+  100% {
+    transform: rotateX(-90deg);
+  }
+}
+
+@keyframes flipBottom {
+  0% {
+    transform: rotateX(90deg);
+  }
+
+  100% {
+    transform: rotateX(0);
+  }
+}
+
+.card > p {
+  font-size: 1rem;
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
 }
