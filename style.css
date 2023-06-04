@@ -7,6 +7,7 @@
   --soft-red: hsl(345, 95%, 68%);
   --white: hsl(0, 0%, 100%);
   --dark-desaturated-blue: hsl(236, 21%, 26%);
+  --lighter-dark-blue: hsl(234, 21%, 20%);
   --dark-blue: hsl(235, 15%, 14%);
   --black: hsl(235, 18%, 12%);
 
@@ -49,27 +50,64 @@ body {
   letter-spacing: 7px;
 }
 
-.card-container {
-  margin-top: 5rem;
+.timer-container {
+  margin-top: 106px;
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 1rem;
   margin-inline: auto;
 }
 
 /** Countdown Cards **/
-
-.card {
-  font-size: clamp(2rem, -0.483rem + 10.596vw, 4rem);
+.card-container {
   position: relative;
-  width: 140px;
+  width: 150px;
   aspect-ratio: 1;
   perspective: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  font-size: clamp(2rem, -0.483rem + 10.596vw, 4.5rem);
+  color: var(--soft-red);
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  border-radius: 0.625rem;
+  -webkit-box-shadow: 0px 15px 0px 0px var(--black);
+  -moz-box-shadow: 0px 10px 0px 0px var(--black);
+  box-shadow: 0px 10px 0px 0px var(--black);
+}
+
+.card::before,
+.card::after {
+  --_pseudo-width: 16px;
+  content: "";
+  position: absolute;
+  background-color: var(--black);
+  width: var(--_pseudo-width);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.card::before {
+  left: calc(var(--_pseudo-width) / -2);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.card::after {
+  right: calc(var(--_pseudo-width) / -2);
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .card-face {
   overflow: hidden;
-  transform-style: preserve-3d;
 }
 
 .top,
@@ -79,32 +117,41 @@ body {
   width: 100%;
   height: 50%;
   line-height: 0;
+  border-radius: 0.625rem;
 }
 
 .top {
   display: grid;
   place-content: end center;
-  background-color: black;
+}
+
+.top,
+.flip-top {
+  background-color: var(--lighter-dark-blue);
 }
 
 .bottom {
   text-align: center;
-  background-color: black;
+}
+
+.bottom,
+.flip-bottom {
+  background-color: var(--dark-desaturated-blue);
 }
 
 .flip-top {
-  position: absolute;
   transform-origin: bottom;
+  position: absolute;
   z-index: 1;
-  animation: flipTop 1s linear both;
+  animation: flipTop 500ms ease-in-out both;
 }
 
 .flip-bottom {
-  position: absolute;
   transform-origin: top;
+  position: absolute;
   bottom: 0;
   z-index: 1;
-  animation: flipBottom 1s linear 1s both;
+  animation: flipBottom 500ms ease-in-out 500ms both;
 }
 
 @keyframes flipTop {
@@ -123,10 +170,29 @@ body {
   }
 }
 
-.card > p {
-  font-size: 1rem;
-  position: absolute;
-  bottom: -40px;
-  left: 50%;
-  transform: translateX(-50%);
+.card-container p {
+  font-size: 14px;
+  margin-top: 1rem;
+  color: hsl(235, 34%, 62%);
+}
+
+@media (min-width: 656px) {
+  .timer-container {
+    gap: 2rem;
+  }
+
+  .card-container p {
+    font-size: 1rem;
+    letter-spacing: 7px;
+  }
+}
+
+@media (min-width: 1200px) {
+  body {
+    background: url(images/pattern-hills.svg), url(images/bg-stars.svg),
+      linear-gradient(180deg, #191a24 17%, #1e1f29 51%, #2b212d 83%);
+    background-size: contain, cover;
+    background-repeat: no-repeat;
+    background-position: 82% 100%, center center;
+  }
 }
