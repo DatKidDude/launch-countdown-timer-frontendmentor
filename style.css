@@ -12,6 +12,9 @@
   --black: hsl(235, 18%, 12%);
 
   --fw-700: 700;
+
+  --animation-time: 250ms;
+  --animation-timing-function: ease-in-out;
 }
 
 *,
@@ -32,6 +35,12 @@ body {
   background-position: 82% 100%, center center;
   color: var(--white);
   font-weight: var(--fw-700);
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
 }
 
 .wrapper {
@@ -63,23 +72,25 @@ body {
   position: relative;
   width: 150px;
   aspect-ratio: 1;
-  perspective: 1000px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  perspective: 500px;
 }
 
 .card {
-  font-size: clamp(2rem, -0.483rem + 10.596vw, 4.5rem);
-  color: var(--soft-red);
   width: 100%;
   height: 100%;
+  font-size: clamp(2rem, -0.483rem + 10.596vw, 4.5rem);
+  color: var(--soft-red);
   overflow: hidden;
   transform-style: preserve-3d;
   border-radius: 0.625rem;
   -webkit-box-shadow: 0px 15px 0px 0px var(--black);
   -moz-box-shadow: 0px 10px 0px 0px var(--black);
   box-shadow: 0px 10px 0px 0px var(--black);
+  position: relative;
+  border-radius: 0.625rem;
 }
 
 .card::before,
@@ -108,53 +119,55 @@ body {
 
 .card-face {
   overflow: hidden;
+  backface-visibility: hidden;
 }
 
 .top,
 .bottom,
-.flip-top,
-.flip-bottom {
+.card .flip-top,
+.card .flip-bottom {
+  position: absolute;
   width: 100%;
   height: 50%;
   line-height: 0;
   border-radius: 0.625rem;
 }
 
-.top {
+.top,
+.card .flip-top {
   display: grid;
   place-content: end center;
-}
-
-.top,
-.flip-top {
   background-color: var(--lighter-dark-blue);
 }
 
-.bottom {
-  text-align: center;
-}
-
 .bottom,
-.flip-bottom {
+.card .flip-bottom {
+  bottom: 0;
+  text-align: center;
   background-color: var(--dark-desaturated-blue);
 }
 
-.flip-top {
-  transform-origin: bottom;
+.card .flip-top {
+  transform-origin: bottom center;
   position: absolute;
   z-index: 1;
-  animation: flipTop 500ms ease-in-out both;
+  animation: flipTop var(--animation-time) var(--animation-timing-function) both;
 }
 
-.flip-bottom {
-  transform-origin: top;
+.card .flip-bottom {
+  transform-origin: top center;
   position: absolute;
   bottom: 0;
   z-index: 1;
-  animation: flipBottom 500ms ease-in-out 500ms both;
+  animation: flipBottom var(--animation-time) var(--animation-timing-function)
+    var(--animation-time) both;
 }
 
 @keyframes flipTop {
+  0% {
+    transform: rotateX(0deg);
+  }
+
   100% {
     transform: rotateX(-90deg);
   }
@@ -174,6 +187,24 @@ body {
   font-size: 14px;
   margin-top: 1rem;
   color: hsl(235, 34%, 62%);
+}
+
+.socials {
+  margin-top: 35vh;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.socials i {
+  font-size: 2rem;
+  color: #8385a9;
+  transition: color 200ms;
+}
+
+.socials a:hover i,
+.socials a:focus-within i {
+  color: var(--soft-red);
 }
 
 @media (min-width: 656px) {

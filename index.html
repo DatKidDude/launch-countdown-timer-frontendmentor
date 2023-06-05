@@ -9,6 +9,13 @@
       sizes="32x32"
       href="./images/favicon-32x32.png"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>Frontend Mentor | Launch countdown timer</title>
     <link rel="stylesheet" href="style.css" />
     <script src="app.js" defer></script>
@@ -20,43 +27,45 @@
       </header>
       <main class="timer-container">
         <div class="card-container">
-          <div class="card">
-            <div class="card-face top flip-top">00</div>
+          <div id="days" class="card">
             <div class="card-face top">00</div>
-            <div class="card-face bottom flip-bottom">00</div>
             <div class="card-face bottom">00</div>
           </div>
           <p>Days</p>
         </div>
         <div class="card-container">
-          <div class="card">
-            <div class="card-face top flip-top">00</div>
+          <div id="hours" class="card">
             <div class="card-face top">00</div>
-            <div class="card-face bottom flip-bottom">00</div>
             <div class="card-face bottom">00</div>
           </div>
           <p>Hours</p>
         </div>
         <div class="card-container">
-          <div class="card">
-            <div class="card-face top flip-top">00</div>
+          <div id="minutes" class="card">
             <div class="card-face top">00</div>
-            <div class="card-face bottom flip-bottom">00</div>
             <div class="card-face bottom">00</div>
           </div>
           <p>Minutes</p>
         </div>
         <div class="card-container">
-          <div class="card">
-            <div class="card-face top flip-top">00</div>
+          <div id="seconds" class="card">
             <div class="card-face top">00</div>
-            <div class="card-face bottom flip-bottom">00</div>
             <div class="card-face bottom">00</div>
           </div>
           <p>Seconds</p>
         </div>
       </main>
-      <footer></footer>
+      <footer>
+        <div class="socials">
+          <a href="#">
+            <i class="fa-brands fa-square-facebook"></i>
+          </a>
+          <a href="#">
+            <i class="fa-brands fa-pinterest"></i>
+          </a>
+          <a href="#"><i class="fa-brands fa-instagram"></i> </a>
+        </div>
+      </footer>
     </div>
   </body>
 </html>
