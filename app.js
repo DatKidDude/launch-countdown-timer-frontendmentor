@@ -7,11 +7,16 @@ targetDate.setDate(targetDate.getDate() + 10);
 // Factory function to parse and return the time remaining
 function getTimeRemaining(endtime) {
   // Date.parse returns the timestamp of the date difference
-  const total = Date.parse(endtime) - Date.parse(new Date());
-  const seconds = Math.floor((total / 1000) % 60);
-  const minutes = Math.floor((total / 1000 / 60) % 60);
-  const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
-  const days = Math.floor(total / (1000 * 60 * 60 * 24));
+  let total = Date.parse(endtime) - Date.parse(new Date());
+  let seconds = Math.floor((total / 1000) % 60);
+  let minutes = Math.floor((total / 1000 / 60) % 60);
+  let hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+  let days = Math.floor(total / (1000 * 60 * 60 * 24));
+
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  hours = hours < 10 ? "0" + hours : hours;
+  days = days < 10 ? "0" + days : days;
 
   return {
     total,
@@ -37,7 +42,8 @@ function flipAllCards() {
 // Get each card and flip it
 function flip(flipCard, newNumber) {
   const topHalf = flipCard.querySelector(".top");
-  const startNumber = parseInt(topHalf.textContent);
+  let startNumber = parseInt(topHalf.textContent);
+  startNumber = startNumber < 10 ? "0" + startNumber : startNumber;
 
   // if the time value doesn't change do nothing
   if (newNumber === startNumber) return;
