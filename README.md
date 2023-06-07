@@ -18,8 +18,8 @@ Users should be able to:
 
 1. View the optimal layout depending on their device's screen size.
 2. See hover states for all interactive elements on the page.
-3. See a live countdown timer that ticks down every second.
-   **Bonus:** When a number changes, make the card flip from the middle.
+3. See a live countdown timer that ticks down every second.<br>
+**Bonus:** When a number changes, make the card flip from the middle.
 
 I do not have access to the Figma sketch so the design is not pixel perfect.
 
