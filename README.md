@@ -4,8 +4,8 @@
 
 <div align="center">
 
-[SOLUTION](https://datkiddude.github.io/launch-countdown-timer-frontendmentor/) |
-[CHALLENGE](https://www.frontendmentor.io/challenges/qr-code-component-iux_sIO_H) |
+[LIVE](https://datkiddude.github.io/launch-countdown-timer-frontendmentor/) |
+[CHALLENGE](https://www.frontendmentor.io/challenges/launch-countdown-timer-N0XkGfyz-) |
 [SOLUTION](https://www.frontendmentor.io/solutions)
 
 </div>
